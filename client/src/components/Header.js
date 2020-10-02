@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 export default class Header extends React.PureComponent {
   render() {
-    const authUser = this.props.context.authenitcatedUser;
+    const authUser = this.props.context.authenticatedUser;
     // const authUser = context.authenticatedUser;
     return (
       <div className="header">

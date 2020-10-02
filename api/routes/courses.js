@@ -40,6 +40,7 @@ router.get('/:id', asyncHandler(async(req, res, next) => {
          "userId", 
          "estimatedTime", 
          "materialsNeeded"],
+         
         where: {
             id: req.params.id
         }

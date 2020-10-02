@@ -34,7 +34,7 @@ export default class Update_Course extends Component {
         const emailAddress = authUser.emailAddress;
         const password = prompt("Enter your password");
 
-        const credentials = btoa(`${authUser.emailAddress}: ` + password);
+        const credentials = btoa(`${authUser.emailAddress}:` + password);
         if (this.state.description === "" || this.state.title === "") {
             this.setState({
                 errors: "Course / Descriptions are required"
@@ -45,17 +45,17 @@ export default class Update_Course extends Component {
             url: `http://localhost:5000/api/courses/${this.props.match.params.id}`,
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
-                'AUthorization': `Basic ${credentials}`
+                'Authorization': `Basic ${credentials}`
             },
             auth: {
                 username: emailAddress,
                 password: password
             },
-            data: {
+            data:{
                 title: this.state.title,
                 description: this.state.description,
                 estimatedTime: this.state.estimatedTime,
-                materialsNeeded: this.state.materialsNeeded,
+                materialsNeeded: this.state.materialsNeeded
                 
             }
         }).then(() => {
@@ -73,7 +73,7 @@ export default class Update_Course extends Component {
     }
 }
     componentDidMount() {
-        axios.get('http://localhost:5000/api/courses/'+this.props.match.params.id)
+        axios.get('http://localhost:5000/api/courses/'+ this.props.match.params.id)
             .then(response => {
                 this.setState({
                     id: response.data.course.id,
@@ -129,7 +129,7 @@ render() {
                             />
                         </div>
                         <p>By {this.state.user}</p>
-                        <div className="couse--description">
+                        <div className="course--description">
                             <div>
                                 <textarea   
                                     id="description"

@@ -8,8 +8,8 @@ export default class User_Sign_Up extends Component {
     lastName: '',
     emailAddress: '',
     password: '',
-    confirmPass:'',
-    errors: [],
+    confirmPassword:'',
+    errors: []
   }
 
   
@@ -31,7 +31,7 @@ export default class User_Sign_Up extends Component {
     lastName,
     emailAddress,
     password,
-    confirmPass,
+    confirmPassword
     } = this.state;
 
     // Create user
@@ -42,7 +42,7 @@ export default class User_Sign_Up extends Component {
       password,
     };
 
-    if ( password !== confirmPass) {
+    if (password !== confirmPassword) {
      
         this.setState(() => {
           return {errors: ['PW must match']}})
@@ -76,11 +76,11 @@ export default class User_Sign_Up extends Component {
       lastName,
       emailAddress,
       password,
-      confirmPass,
+      confirmPassword,
       errors
-    } = this.state;
+    } = this.state
 
-    return (
+    return(
       <div className="bounds">
         <div className="grid-33 centered signin">
           <h1>Sign Up</h1>
@@ -97,36 +97,36 @@ export default class User_Sign_Up extends Component {
                     name="firstName" 
                     type="text"
                     value={firstName} 
-                    onChange={this.change} 
-                    placeholder="First Name" />
+                    placeholder="First Name"
+                    onChange={this.change} />
                   <input 
                     id="lastName" 
                     name="lastName" 
                     type="text"
                     value={lastName} 
-                    onChange={this.change} 
-                    placeholder="Last Name" />
+                    placeholder="Last Name"
+                    onChange={this.change} />
                   <input 
                     id="emailAddress" 
                     name="emailAddress" 
                     type="text"
                     value={emailAddress} 
-                    onChange={this.change} 
-                    placeholder="Email" />
+                    placeholder="Email"
+                    onChange={this.change} />
                   <input 
                     id="password" 
                     name="password" 
                     type="password"
                     value={password} 
-                    onChange={this.change} 
-                    placeholder="Password" />
+                    placeholder="Password"
+                    onChange={this.change} />
                   <input 
-                    id="confirmPass" 
-                    name="confirmPass" 
+                    id="confirmPassword" 
+                    name="confirmPassword" 
                     type="password"
-                    value={confirmPass} 
-                    onChange={this.change} 
-                    placeholder="Confirm Pass" />
+                    value={confirmPassword} 
+                    placeholder="Confirm Pass" 
+                    onChange={this.change} />
               </React.Fragment>
             )} />
           <p>

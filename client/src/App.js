@@ -29,7 +29,7 @@ import {Provider} from './Context';
 const Auth_With_Context = withContext(Authenticated);
 const Course_Detail_With_Content = withContext(Course_Detail);
 const Create_Course_With_Context = withContext(Create_Course);
-const Header_With_Context = withContext(Header);
+const HEADER_WITH_CONTEXT = withContext(Header);
 const User_Sign_In_With_Context = withContext(User_Sign_In);
 const User_Sign_Out_With_Context = withContext(User_Sign_Out);
 const User_Sign_Up_With_Context = withContext(User_Sign_Up);
@@ -43,7 +43,7 @@ class App extends Component {
           <div id="root">
             <div>
             
-              <Header_With_Context />
+              <HEADER_WITH_CONTEXT />
               <Switch>
                 <Redirect exact from="/" to="/courses" />
                 <Route exact path="/courses" component={Courses} />

@@ -2,6 +2,7 @@ const User = require("../models").User;
 const bcryptjs = require("bcryptjs");
 const auth = require("basic-auth");
 
+
 const authUser = async(req, res, next) => {
     let message = null;
 

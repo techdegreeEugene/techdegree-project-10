@@ -20,7 +20,7 @@ export default class Course_Detail extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/courses' + this.props.match.params.id)
+        axios.get('http://localhost:5000/api/courses/' + this.props.match.params.id)
             .then(response => {
                 this.setState({
                     course: response.data.course,
@@ -30,7 +30,7 @@ export default class Course_Detail extends Component {
                     estimatedTime: response.data.course.estimatedTime,
                     id: response.data.course.id,
                     userId: response.data.course.userId,
-                    username: response.data.course.User.firstName + " " + response.data.course.lastName,
+                    // username: response.data.course.User.firstName + " " + response.data.course.User.lastName,
                 })
             })
             .catch(error => {
@@ -39,7 +39,7 @@ export default class Course_Detail extends Component {
     }
 
     delete = async(e) => {
-        e.prvenentDefault();
+        e.preventDefault();
         const {context} = this.props;
         const authUser = context.authenticatedUser;
         let password = prompt("Enter pw to confirm");
@@ -62,7 +62,7 @@ export default class Course_Detail extends Component {
         const {context} = this.props;
         return (
             <div>
-                <div className="action--bar">
+                <div className="actions--bar">
                     <div className="bounds">
                         <div className="grid-100">
                             {context.authenticatedUser && context.authenticatedUser.id === this.state.userId ? (

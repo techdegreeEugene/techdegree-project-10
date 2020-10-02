@@ -16,7 +16,7 @@ export default class User_Sign_In extends Component {
       errors,
     } = this.state;
 
-    return (
+    return(
       <div className="bounds">
         <div className="grid-33 centered signin">
           <h1>Sign In</h1>
@@ -79,10 +79,10 @@ export default class User_Sign_In extends Component {
           this.props.history.push(from);
         }
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(err => {
+        console.log(err);
         this.props.history.push('/error');
-      });
+      })
   }
 
   cancel = () => {

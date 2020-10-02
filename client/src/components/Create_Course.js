@@ -9,7 +9,7 @@ export default class Create_Course extends Component {
         title:'',
         description:'',
         materialsNeeded:'',
-        estimatedTime:'',
+        estimatedTime:''
 
     }
 
@@ -31,7 +31,7 @@ export default class Create_Course extends Component {
         const emailAddress = authUser.emailAddress;
         const password = prompt("Enter your password");
         const userId = authUser.id;
-        const credentials = btoa(`${authUser.emailAddress}: ` + password);
+        const credentials = btoa(`${authUser.emailAddress}:` + password);
         if (this.state.description === "" || this.state.title === "") {
             this.setState({
                 errors: "Course / Descriptions are required"
@@ -42,7 +42,7 @@ export default class Create_Course extends Component {
             url: 'http://localhost:5000/api/courses',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
-                'AUthorization': `Basic ${credentials}`
+                'Authorization': `Basic ${credentials}`
             },
             auth: {
                 username: emailAddress,
@@ -63,7 +63,7 @@ export default class Create_Course extends Component {
                 this.setState({
                     errors: err.response.data.message
                 })
-            } else if  (err.response.status === 401) {
+            } else if (err.response.status === 401) {
                 this.setState({
                     errors: err.response.data.message
                 })
@@ -74,7 +74,7 @@ export default class Create_Course extends Component {
 
 render() {
     const {context} = this.props;
-    const authUser  = context.authenticatedUser;
+    const authUser = context.authenticatedUser;
 
     return(
         <div className="bounds course--detail">
@@ -91,7 +91,7 @@ render() {
                                 </ul>
                             </div>
                         </div>
-                    ) : null
+                    ): null
                 }
             </div>
             <form onSubmit={this.submit}>
@@ -110,7 +110,7 @@ render() {
                             />
                         </div>
                         <p>By {authUser.firstName} {authUser.lastName}</p>
-                        <div className="couse--description">
+                        <div className="course--description">
                             <div>
                                 <textarea   
                                     id="description"
@@ -126,7 +126,7 @@ render() {
                     <div className="grid-25 grid-right">
                         <div className="course--stats">
                             <ul className="course--stats--list">
-                                <li className="course--stats--list-item">
+                                <li className="course--stats--list--item">
                                     <h4>Estimate Time</h4>
                                     <div>
                                         <input
@@ -144,7 +144,7 @@ render() {
                                     <h4>Materials Needed</h4>
                                     <div>
                                         <textarea   
-                                            id="materialsNeeeded"
+                                            id="materialsNeeded"
                                             name="materialsNeeded"
                                             placeholder="List materials"
                                             value={this.state.materialsNeeded}
